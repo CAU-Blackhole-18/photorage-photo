@@ -1,2 +1,2 @@
 # photorage-photo
-Photo Context of Photorage BE
+Photo Service of Photorage BE
