@@ -1,11 +1,10 @@
 package cauBlackHole.photoragephoto.service
 
-import cauBlackHole.photoragephoto.domain.Photo
-import cauBlackHole.photoragephoto.web.rest.dto.PhotoCreateDTO
-import cauBlackHole.photoragephoto.web.rest.dto.PhotoResponseDTO
+import cauBlackHole.photoragephoto.web.rest.dto.PhotoDTO
+import cauBlackHole.photoragephoto.web.rest.dto.PhotoUpdateDTO
 
 interface PhotoService {
-    fun getPhoto(id: Long): Photo
-    fun createPhoto(photos: List<Photo>): List<Photo>
-    fun updatePhoto(photo: Photo): Photo
+    fun getPhoto(id: Long): PhotoDTO
+    fun createPhoto(photos: List<PhotoDTO>): List<PhotoDTO>
+    fun updatePhoto(id: Long, photoUpdateDTO: PhotoUpdateDTO): PhotoDTO
 }
