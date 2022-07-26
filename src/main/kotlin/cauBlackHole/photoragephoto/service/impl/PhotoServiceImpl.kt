@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class PhotoServiceImpl(private val photoRepository: PhotoRepository) : PhotoService {
+    override fun getPhoto(id: Long): Photo = photoRepository.findById(id).orElseThrow()
     override fun createPhoto(photos: List<Photo>) = photoRepository.saveAll(photos).toList()
 }
 

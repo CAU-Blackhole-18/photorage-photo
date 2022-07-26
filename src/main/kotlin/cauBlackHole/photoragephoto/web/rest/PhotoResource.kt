@@ -5,10 +5,7 @@ import cauBlackHole.photoragephoto.web.rest.dto.PhotoCreateDTO
 import cauBlackHole.photoragephoto.web.rest.dto.PhotoDTO
 import cauBlackHole.photoragephoto.web.rest.mapper.PhotoMapper
 import cauBlackHole.photoragephoto.service.PhotoService
-import org.springframework.web.bind.annotation.ModelAttribute
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api")
@@ -16,6 +13,12 @@ class PhotoResource (
     private val photoService: PhotoService,
     private val photoMapper: PhotoMapper,
 ) {
+    @GetMapping("/photos/{id}")
+    fun getPhoto(@PathVariable id: Long) = PhotoResponseDTO(
+        photoMapper.toDto(
+            photoService.getPhoto(id)
+        )
+    )
 
     @PostMapping("/photos")
     fun createPhoto(@ModelAttribute photoCreateDTO: PhotoCreateDTO) = PhotoResponseDTO(
