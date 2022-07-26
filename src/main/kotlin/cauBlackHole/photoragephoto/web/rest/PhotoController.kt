@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api")
-class PhotoResource (
+class PhotoController (
     private val photoService: PhotoService,
 ) {
     @GetMapping("/photos/{id}")
