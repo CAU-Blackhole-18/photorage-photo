@@ -14,6 +14,10 @@ class PhotoServiceImpl(
 ): PhotoService {
     override fun getPhoto(id: Long) = photoMapper.toDto(photoRepository.findById(id).orElseThrow())
 
+    override fun getAlbumPhotos(albumId: Long) = photoMapper.toDto(
+        photoRepository.findAllByAlbumId(albumId)
+    )
+
     override fun createPhoto(photos: List<PhotoDTO>) = photoMapper.toDto(
         photoRepository.saveAll(
             photoMapper.toEntity(photos)

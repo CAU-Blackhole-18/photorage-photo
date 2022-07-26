@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface PhotoRepository : CrudRepository<Photo, Long>
+interface PhotoRepository : CrudRepository<Photo, Long> {
+    fun findAllByAlbumId(albumId: Long): List<Photo>
+}
