@@ -5,6 +5,7 @@ import cauBlackHole.photoragephoto.web.rest.dto.PhotoCreateDTO
 import cauBlackHole.photoragephoto.web.rest.dto.PhotoDTO
 import cauBlackHole.photoragephoto.web.rest.mapper.PhotoMapper
 import cauBlackHole.photoragephoto.service.PhotoService
+import cauBlackHole.photoragephoto.web.rest.dto.PhotoUpdateDTO
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -38,4 +39,15 @@ class PhotoResource (
         )
     )
 
+
+    @PutMapping("/photos/{id}")
+    fun updatePhoto(@PathVariable id: Long, @RequestBody photoUpdateDTO: PhotoUpdateDTO): PhotoResponseDTO {
+        var photo = photoService.getPhoto(id)
+        photo.albumId = photoUpdateDTO.albumId
+        return PhotoResponseDTO(
+            photoMapper.toDto(
+                photoService.updatePhoto(photo)
+            )
+        )
+    }
 }
