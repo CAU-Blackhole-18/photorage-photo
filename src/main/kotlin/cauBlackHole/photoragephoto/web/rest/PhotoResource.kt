@@ -35,4 +35,7 @@ class PhotoResource (
         @PathVariable id: Long,
         @RequestBody photoUpdateDTO: PhotoUpdateDTO,
     ) = PhotoResponseDTO(photoService.updatePhoto(id, photoUpdateDTO))
+
+    @DeleteMapping("/photos/{id}")
+    fun deletePhoto(@PathVariable id: Long) = photoService.deletePhoto(id)
 }

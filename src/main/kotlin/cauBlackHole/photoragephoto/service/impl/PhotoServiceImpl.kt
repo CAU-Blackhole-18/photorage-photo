@@ -25,5 +25,7 @@ class PhotoServiceImpl(
         photo.albumId = photoUpdateDTO.albumId
         return photoMapper.toDto(photoRepository.save(photo))
     }
+
+    override fun deletePhoto(id: Long) = photoRepository.deleteById(id)
 }
 
