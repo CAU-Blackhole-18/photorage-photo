@@ -1,10 +1,10 @@
 package cauBlackHole.photoragephoto.repository
 
 import cauBlackHole.photoragephoto.domain.Photo
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface PhotoRepository : CrudRepository<Photo, Long> {
-    fun findAllByAlbumId(albumId: Long): List<Photo>
+interface PhotoRepository : PagingAndSortingRepository<Photo, String> {
+    fun findAllByAlbumId(albumId: String): List<Photo>
 }

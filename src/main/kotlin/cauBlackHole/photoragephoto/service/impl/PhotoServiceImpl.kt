@@ -12,9 +12,9 @@ class PhotoServiceImpl(
     private val photoRepository: PhotoRepository,
     private val photoMapper: PhotoMapper,
 ): PhotoService {
-    override fun getPhoto(id: Long) = photoMapper.toDto(photoRepository.findById(id).orElseThrow())
+    override fun getPhoto(id: String) = photoMapper.toDto(photoRepository.findById(id).orElseThrow())
 
-    override fun getAlbumPhotos(albumId: Long) = photoMapper.toDto(
+    override fun getAlbumPhotos(albumId: String) = photoMapper.toDto(
         photoRepository.findAllByAlbumId(albumId)
     )
 
@@ -24,12 +24,12 @@ class PhotoServiceImpl(
         ).toList()
     )
 
-    override fun updatePhoto(id: Long, photoUpdateDTO: PhotoUpdateDTO): PhotoDTO {
+    override fun updatePhoto(id: String, photoUpdateDTO: PhotoUpdateDTO): PhotoDTO {
         var photo = photoRepository.findById(id).orElseThrow()
         photo.albumId = photoUpdateDTO.albumId
         return photoMapper.toDto(photoRepository.save(photo))
     }
 
-    override fun deletePhoto(id: Long) = photoRepository.deleteById(id)
+    override fun deletePhoto(id: String) = photoRepository.deleteById(id)
 }
 

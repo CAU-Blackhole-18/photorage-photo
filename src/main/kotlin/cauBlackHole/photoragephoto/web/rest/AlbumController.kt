@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/albums")
 class AlbumController (private val photoService: PhotoService) {
     @GetMapping("/{albumId}")
-    fun getAlbumPhotos(@PathVariable albumId: Long) = PhotoResponseDTO(photoService.getAlbumPhotos(albumId))
+    fun getAlbumPhotos(@PathVariable albumId: String) = PhotoResponseDTO(photoService.getAlbumPhotos(albumId))
 }

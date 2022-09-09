@@ -13,7 +13,7 @@ class PhotoController (
     private val photoService: PhotoService,
 ) {
     @GetMapping("/{id}")
-    fun getPhoto(@PathVariable id: Long) = PhotoResponseDTO(photoService.getPhoto(id))
+    fun getPhoto(@PathVariable id: String) = PhotoResponseDTO(photoService.getPhoto(id))
 
     @PostMapping()
     fun createPhoto(@ModelAttribute photoCreateDTO: PhotoCreateDTO) = PhotoResponseDTO(
@@ -32,10 +32,10 @@ class PhotoController (
 
     @PutMapping("/{id}")
     fun updatePhoto(
-        @PathVariable id: Long,
+        @PathVariable id: String,
         @RequestBody photoUpdateDTO: PhotoUpdateDTO,
     ) = PhotoResponseDTO(photoService.updatePhoto(id, photoUpdateDTO))
 
     @DeleteMapping("/{id}")
-    fun deletePhoto(@PathVariable id: Long) = photoService.deletePhoto(id)
+    fun deletePhoto(@PathVariable id: String) = photoService.deletePhoto(id)
 }

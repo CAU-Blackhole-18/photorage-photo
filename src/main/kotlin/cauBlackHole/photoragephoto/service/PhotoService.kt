@@ -4,13 +4,13 @@ import cauBlackHole.photoragephoto.web.rest.dto.PhotoDTO
 import cauBlackHole.photoragephoto.web.rest.dto.PhotoUpdateDTO
 
 interface PhotoService {
-    fun getPhoto(id: Long): PhotoDTO
+    fun getPhoto(id: String): PhotoDTO
 
-    fun getAlbumPhotos(albumId: Long): List<PhotoDTO>
+    fun getAlbumPhotos(albumId: String): List<PhotoDTO>
 
     fun createPhoto(photos: List<PhotoDTO>): List<PhotoDTO>
 
-    fun updatePhoto(id: Long, photoUpdateDTO: PhotoUpdateDTO): PhotoDTO
+    fun updatePhoto(id: String, photoUpdateDTO: PhotoUpdateDTO): PhotoDTO
 
-    fun deletePhoto(id: Long)
+    fun deletePhoto(id: String)
 }
